@@ -59,6 +59,47 @@ if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
 
 endif()
 
+
+if(CMAKE_VERSION VERSION_GREATER_EQUAL "3.28.0")
+    function(add_module name)
+        add_library(boost_mp11_mod_${name})
+        target_sources(boost_mp11_mod_${name} PUBLIC FILE_SET CXX_MODULES FILES module/${name}.cpp)
+        target_include_directories(boost_mp11_mod_${name} PRIVATE include)
+        target_compile_features(boost_mp11_mod_${name} PUBLIC cxx_std_20)
+        target_compile_definitions(boost_mp11_mod_${name} PUBLIC BOOST_MP11_MODULE_EXPORT=export)
+    endfunction()
+
+    add_module(integral)
+    add_module(list)
+    target_link_libraries(boost_mp11_mod_list PUBLIC boost_mp11_mod_integral boost_mp11_mod_utility)
+    add_module(utility)
+    target_link_libraries(boost_mp11_mod_utility PUBLIC boost_mp11_mod_integral)
+    add_module(algorithm)
+    target_link_libraries(boost_mp11_mod_algorithm PUBLIC boost_mp11_mod_integral boost_mp11_mod_set boost_mp11_mod_utility boost_mp11_mod_function)
+    add_module(set)
+    target_link_libraries(boost_mp11_mod_algorithm PUBLIC boost_mp11_mod_list boost_mp11_mod_function)
+
+    add_module(function)
+    target_link_libraries(boost_mp11_mod_algorithm PUBLIC boost_mp11_mod_integral boost_mp11_mod_utility)
+    add_module(bind)
+    add_module(lambda)
+    add_module(tuple)
+
+    add_module(mp11)
+    add_dependencies(
+        boost_mp11_mod_mp11
+        boost_mp11_mod_integral
+        boost_mp11_mod_list
+        boost_mp11_mod_utility
+        boost_mp11_mod_algorithm
+        boost_mp11_mod_set
+        boost_mp11_mod_function
+        boost_mp11_mod_bind
+        boost_mp11_mod_lambda
+        boost_mp11_mod_tuple)
+
+endif()
+
 if(BUILD_TESTING)
 
   add_subdirectory(test)
