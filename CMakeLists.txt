@@ -66,6 +66,7 @@ if(CMAKE_VERSION VERSION_GREATER_EQUAL "3.28.0")
     target_include_directories(boost_mp11_mod_module PRIVATE include)
     target_compile_features(boost_mp11_mod_module PUBLIC cxx_std_20)
     target_compile_definitions(boost_mp11_mod_module PUBLIC BOOST_MP11_MODULE_EXPORT=export)
+    set(CMAKE_CXX_SCAN_FOR_MODULES ON)
 endif()
 
 if(BUILD_TESTING)
