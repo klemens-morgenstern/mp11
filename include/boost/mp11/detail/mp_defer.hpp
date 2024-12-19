@@ -105,10 +105,12 @@ template<template<class...> class F, class... T> struct mp_defer_cuda_workaround
 
 #if BOOST_MP11_WORKAROUND( BOOST_MP11_CUDA, >= 9000000 && BOOST_MP11_CUDA < 10000000 )
 
+BOOST_MP11_MODULE_EXPORT
 template<template<class...> class F, class... T> using mp_defer = typename detail::mp_defer_cuda_workaround< F, T...>::type;
 
 #else
 
+BOOST_MP11_MODULE_EXPORT
 template<template<class...> class F, class... T> using mp_defer = mp_if<mp_valid<F, T...>, detail::mp_defer_impl<F, T...>, detail::mp_no_type>;
 
 #endif

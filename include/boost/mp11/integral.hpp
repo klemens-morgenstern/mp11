@@ -1,9 +1,7 @@
 #ifndef BOOST_MP11_INTEGRAL_HPP_INCLUDED
 #define BOOST_MP11_INTEGRAL_HPP_INCLUDED
 
-#if defined(BOOST_MP11_MODULE_EXPORT)
-module ;
-#endif
+
 //  Copyright 2015 Peter Dimov.
 //
 //  Distributed under the Boost Software License, Version 1.0.
@@ -19,12 +17,6 @@ module ;
 #if defined(_MSC_VER) || defined(__GNUC__)
 # pragma push_macro( "I" )
 # undef I
-#endif
-
-#if defined(BOOST_MP11_MODULE_EXPORT)
-export module boost.mp11.integral ;
-#else
-#define BOOST_MP11_MODULE_EXPORT
 #endif
 
 namespace boost

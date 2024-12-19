@@ -146,4 +146,8 @@
 #  define BOOST_MP11_DEPRECATED(msg)
 #endif
 
+#if !defined(BOOST_MP11_MODULE_EXPORT)
+#define BOOST_MP11_MODULE_EXPORT
+#endif
+
 #endif // #ifndef BOOST_MP11_DETAIL_CONFIG_HPP_INCLUDED

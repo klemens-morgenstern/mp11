@@ -15,6 +15,7 @@ namespace boost
 namespace mp11
 {
 
+BOOST_MP11_MODULE_EXPORT
 template<auto A> using mp_value = std::integral_constant<decltype(A), A>;
 
 } // namespace mp11

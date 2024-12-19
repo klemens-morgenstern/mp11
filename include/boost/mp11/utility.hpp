@@ -8,27 +8,13 @@
 // See accompanying file LICENSE_1_0.txt or copy at
 // http://www.boost.org/LICENSE_1_0.txt
 
-#if defined(BOOST_MP11_MODULE_EXPORT)
-module ;
-import boost.mp11.integral ;
-#define BOOST_MP11_INTEGRAL_HPP_INCLUDED
-#else
 #include <boost/mp11/integral.hpp>
-#endif
-
 #include <boost/mp11/detail/mp_list.hpp>
 #include <boost/mp11/detail/mp_fold.hpp>
 #include <boost/mp11/detail/mp_front.hpp>
 #include <boost/mp11/detail/mp_rename.hpp>
 #include <boost/mp11/detail/mp_defer.hpp>
 #include <boost/mp11/detail/config.hpp>
-
-#if defined(BOOST_MP11_MODULE_EXPORT)
-export module boost.mp11.utility ;
-#else
-#define BOOST_MP11_MODULE_EXPORT
-#endif
-
 
 namespace boost
 {
